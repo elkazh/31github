@@ -1,0 +1,12 @@
+package com.example.mvc.mvc;
+
+import org.springframework.context.annotation.Lazy;
+
+public class Model {
+    @Lazy
+    private final Viewer viewer;
+    public Model(@Lazy Viewer viewer) {
+        System.out.println("I am Model object" + this);
+        this.viewer = viewer;
+    }
+}

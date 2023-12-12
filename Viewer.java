@@ -1,0 +1,14 @@
+package com.example.mvc.mvc;
+
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+@Service
+@Component
+public class Viewer {
+
+    private final Controller controller;
+    public Viewer (Controller controller){
+        System.out.println("I am Viewer object");
+        this.controller = controller;
+    }
+}
