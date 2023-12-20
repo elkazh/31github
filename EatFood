@@ -1,0 +1,7 @@
+public abstract class EatFood extends DrinkWine{    
+    private final Client client;
+    public EatFood(Client client){        
+        System.out.println("I am EatFood object");
+        this.client= client;    
+    }
+}
