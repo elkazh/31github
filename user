@@ -1,0 +1,5 @@
+@Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(username -> {
+            User user = userService.getUserByUsername(username);
+            List<GrantedAuthority> authorities = user
