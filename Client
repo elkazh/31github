@@ -1,0 +1,62 @@
+package com.example.hibernateLesson1.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "suppliers")
+public class Client {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "SUP_ID")
+    private Long id;
+
+    @Column(name = "SUP_NAME", nullable = false)
+    private String supName;
+    @Column(name = "STREET", nullable = false)
+    private String street;
+    @Column(name = "CITY", nullable = false)
+    private String city;
+    @Column(name = "STATE", length = 2, nullable = false)
+    private String state;
+    @Column(name = "ZIP", length = 5, nullable = false)
+    private String zip;
+
+    public Client(String supName, String street, String city, String state, String zip) {
+        this.id = id;
+        this.supName = supName;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+    }
+
+    public Client() {
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getSupName() {
+        return supName;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+}
+
