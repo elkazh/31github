@@ -1,0 +1,5 @@
+package com.example.hibernateLesson1.domain;
+
+
+public record ClientRecord(Long id, String supName, String street, String city, String state, String zip) {
+}
