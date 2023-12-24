@@ -1,0 +1,33 @@
+package com.example.hibernateLesson1.controller;
+
+import com.example.hibernateLesson1.domain.ClientRecord;
+import com.example.hibernateLesson1.entity.Client;
+import com.example.hibernateLesson1.repository.ClientRepository;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class ClientMvcController {
+
+    private ClientRepository clientRepository;
+
+    public ClientMvcController(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
+    }
+
+    @GetMapping("/")
+    public String formClient(Model model) {
+//        model.addAttribute("client", new Client());
+        return "form";
+    }
+
+    @PostMapping("/add")
+    public String addClient(@ModelAttribute ClientRecord clientRecord, Model model) {
+        model.addAttribute("client", clientRepository.addClient(clientRecord));
+        return "result";
+    }
+}
