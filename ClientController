@@ -1,0 +1,33 @@
+package com.example.hibernateLesson1.controller.api;
+
+import com.example.hibernateLesson1.domain.ClientRecord;
+import com.example.hibernateLesson1.entity.Client;
+import com.example.hibernateLesson1.repository.ClientRepository;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
+
+@RestController
+@RequestMapping("api/client")
+public class ClientController {
+
+    private ClientRepository clientRepository;
+
+    public ClientController(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Client> getClient(@PathVariable Long id) {
+        Optional<Client> client = clientRepository.findById(id);
+        return new ResponseEntity<>(client.get(), HttpStatus.OK);
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<Client> addClient(@RequestBody ClientRecord clientRecord) {
+     return new ResponseEntity<>(clientRepository.addClient(clientRecord), HttpStatus.CREATED);
+    }
+}
