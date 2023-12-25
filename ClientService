@@ -1,0 +1,8 @@
+package com.example.hibernateLesson1.service;
+
+import com.example.hibernateLesson1.entity.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+
+public interface ClientService extends CrudRepository<Client, Long> {
+}
