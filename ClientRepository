@@ -1,0 +1,34 @@
+package com.example.hibernateLesson1.repository;
+
+import com.example.hibernateLesson1.domain.ClientRecord;
+import com.example.hibernateLesson1.entity.Client;
+import com.example.hibernateLesson1.service.ClientService;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public class ClientRepository {
+
+    private ClientService clientService;
+
+    public ClientRepository(ClientService clientService) {
+        this.clientService = clientService;
+
+    }
+
+    public Optional<Client> findById(Long id) {
+        return clientService.findById(id);
+    }
+
+    public Client addClient(ClientRecord clientRecord) {
+        Client client = new Client(clientRecord.supName(),
+                                    clientRecord.street(),
+                                    clientRecord.city(),
+                                    clientRecord.state(),
+                                    clientRecord.zip());
+        return clientService.save(client);
+    }
+
+
+}
