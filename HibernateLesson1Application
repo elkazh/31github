@@ -1,0 +1,13 @@
+package com.example.hibernateLesson1;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class HibernateLesson1Application {
+
+ public static void main(String[] args) {
+  SpringApplication.run(HibernateLesson1Application.class, args);
+ }
+
+}
