@@ -1,0 +1,53 @@
+import java.sql.Connection; 
+import java.sql.DriverManager; 
+import java.sql.SQLException; 
+import java.sql.Statement; 
+import java.sql.ResultSet; 
+import java.sql.ResultSetMetaData; 
+import java.util.Vector; 
+ 
+public class Connect { 
+     
+    public static void main(String args[]) { 
+        try { 
+            Class.forName("org.postgresql.Driver"); 
+            Connection connection = DriverManager.getConnection( 
+            "jdbc:postgresql://3.227.13.156:5432/erkin_koshoev", 
+            "erkinkoshoev", 
+            "Qwerty!@#123"); 
+            Statement statement = connection.createStatement(); 
+            /* 
+            CREATE TABLE Customers ( 
+            id_customers int, 
+            last_name varchar(255), 
+            first_name varchar(255) 
+            ); 
+            */ 
+            String sqlQuery = "SELECT * FROM clients"; 
+            ResultSet resultSet = statement.executeQuery(sqlQuery); 
+            ResultSetMetaData metaData = resultSet.getMetaData(); 
+            int numberOfColumns = metaData.getColumnCount(); 
+            Vector<String> columnIdentifiers = new Vector<String>(); 
+            for(int column = 0; column < numberOfColumns; column++) { 
+                String value = metaData.getColumnLabel(column + 1); 
+                columnIdentifiers.addElement(value); 
+            } 
+             
+            System.out.println(columnIdentifiers); 
+            Vector<Vector> dataVector = new Vector<Vector>(); 
+            while(resultSet.next()) { 
+                Vector<String> rowTable = new Vector<String>(); 
+                for (int i = 1; i <= numberOfColumns; i++) { 
+                    String value = resultSet.getString(i); 
+                    rowTable.addElement(value); 
+                } 
+                dataVector.addElement(rowTable); 
+            } 
+            System.out.println(dataVector); 
+        } catch(SQLException sqle) { 
+            System.out.println(sqle); 
+        } catch(ClassNotFoundException cnfe) { 
+            System.out.println(cnfe); 
+        } 
+    } 
+}
