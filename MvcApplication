@@ -1,0 +1,10 @@
+public class MvcApplication {
+ public static void main(String[] args) {
+  System.out.println("123");
+  Elvira ob2 = new Elvira();
+  System.out.println("ob2 = " + ob2);
+  Erkin ob = new Erkin(ob2);
+  System.out.println("ob = " + ob);
+  ob.erkin();
+ }
+}
