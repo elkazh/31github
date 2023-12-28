@@ -1,0 +1,6 @@
+public class Erkin {    private final Elvira elvira;
+    public Erkin(Elvira elvira) {        this.elvira = elvira;
+    }
+    public void erkin() {        System.out.println("erkin()");
+        elvira.bishkek();    }
+}
