@@ -1,0 +1,5 @@
+public class ViewerForMain {    private final Controller controller;
+
+    public Viewer() { System.out.println("I am Viewer object.");
+ controller = new Controller(); System.out.println("controller = " + controller);
+    }}
