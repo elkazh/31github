@@ -1,0 +1,5 @@
+public class Controller2 {    private final Model model;
+    public Controller() {
+ System.out.println("I am Controller object."); model = new Model();
+ System.out.println("model = " + model);    }
+}
