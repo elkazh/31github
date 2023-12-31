@@ -1,0 +1,4 @@
+public class Model1 {
+    public Model() { System.out.println("I am Model object.");
+    }
+}
